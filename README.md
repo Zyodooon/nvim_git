@@ -11,17 +11,23 @@ LazyVim をベースにした Neovim 設定です。
 
 ## 置き場所
 
-- 実体: `/home/ponqoo/working/config/nvim`
-- Neovim が読む場所: `/home/ponqoo/.config/nvim`
-- `/home/ponqoo/.config/nvim` は `/home/ponqoo/working/config/nvim` への symlink。
-- remote: `git@github.com:Zyodooon/nvim_git.git`
+- 実体: `<config-root>/nvim`
+- Neovim が読む場所: `$HOME/.config/nvim`
+- `$HOME/.config/nvim` を `<config-root>/nvim` への symlink にすると、標準パスのままこの設定を使える。
+
+例:
+
+```bash
+CONFIG_ROOT="$HOME/working/config"
+ln -s "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
+```
 
 ## 変更を書き込む
 
 設定を編集する。
 
 ```bash
-cd /home/ponqoo/working/config/nvim
+cd "$CONFIG_ROOT/nvim"
 nvim .
 ```
 
@@ -52,8 +58,9 @@ git push
 別マシンで反映する。
 
 ```bash
-git clone git@github.com:Zyodooon/nvim_git.git /home/ponqoo/working/config/nvim
-ln -s /home/ponqoo/working/config/nvim /home/ponqoo/.config/nvim
+CONFIG_ROOT="$HOME/working/config"
+git clone <repository-url> "$CONFIG_ROOT/nvim"
+ln -s "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
 ```
 
 ## ローカル設定
