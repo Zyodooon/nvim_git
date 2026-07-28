@@ -22,6 +22,35 @@ CONFIG_ROOT="$HOME/working/config"
 ln -s "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
 ```
 
+## 有効化する
+
+既存設定がある場合はバックアップする。
+
+```bash
+CONFIG_ROOT="$HOME/working/config"
+mkdir -p "$HOME/.config"
+[ -e "$HOME/.config/nvim" ] && mv "$HOME/.config/nvim" "$HOME/.config/nvim.bak"
+```
+
+symlink を作る。
+
+```bash
+ln -s "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
+```
+
+有効化できているか確認する。
+
+```bash
+readlink "$HOME/.config/nvim"
+nvim --headless "+Lazy! sync" +qa
+```
+
+通常起動する。
+
+```bash
+nvim
+```
+
 ## 変更を書き込む
 
 設定を編集する。
@@ -61,6 +90,7 @@ git push
 CONFIG_ROOT="$HOME/working/config"
 git clone <repository-url> "$CONFIG_ROOT/nvim"
 ln -s "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
+nvim --headless "+Lazy! sync" +qa
 ```
 
 ## ローカル設定
