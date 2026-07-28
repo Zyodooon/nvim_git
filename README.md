@@ -9,6 +9,53 @@ LazyVim をベースにした Neovim 設定です。
 - leader key: `Space`
 - local leader key: `\`
 
+## 置き場所
+
+- 実体: `/home/ponqoo/working/config/nvim`
+- Neovim が読む場所: `/home/ponqoo/.config/nvim`
+- `/home/ponqoo/.config/nvim` は `/home/ponqoo/working/config/nvim` への symlink。
+- remote: `git@github.com:Zyodooon/nvim_git.git`
+
+## 変更を書き込む
+
+設定を編集する。
+
+```bash
+cd /home/ponqoo/working/config/nvim
+nvim .
+```
+
+変更内容を確認する。
+
+```bash
+git status
+git diff
+```
+
+GitHub に上げる。
+
+```bash
+git add .
+git commit -m "nvim設定を更新"
+git push
+```
+
+plugin 更新などで `lazy-lock.json` だけ変わった場合は、内容を確認してから commit する。
+
+```bash
+git diff -- lazy-lock.json
+git add lazy-lock.json
+git commit -m "nvimプラグインロックを更新"
+git push
+```
+
+別マシンで反映する。
+
+```bash
+git clone git@github.com:Zyodooon/nvim_git.git /home/ponqoo/working/config/nvim
+ln -s /home/ponqoo/working/config/nvim /home/ponqoo/.config/nvim
+```
+
 ## ローカル設定
 
 `lua/config/options.lua` では、tmux 内で Neovim を使っているときのカーソル形状を調整しています。
