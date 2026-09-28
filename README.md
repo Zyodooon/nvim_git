@@ -2,6 +2,9 @@
 
 LazyVim をベースにした Neovim 設定です。
 
+必要なツール・確認済みバージョン・macOSでの初回導入手順は
+[依存環境と導入手順](version/README.md) を参照してください。
+
 ## 基本
 
 - ベース: [LazyVim](https://github.com/LazyVim/LazyVim)
@@ -42,7 +45,7 @@ ln -s "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
 
 ```bash
 readlink "$HOME/.config/nvim"
-nvim --headless "+Lazy! sync" +qa
+nvim --headless "+Lazy! restore" +qa
 ```
 
 通常起動する。
@@ -90,7 +93,7 @@ git push
 CONFIG_ROOT="$HOME/working/config"
 git clone <repository-url> "$CONFIG_ROOT/nvim"
 ln -s "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
-nvim --headless "+Lazy! sync" +qa
+nvim --headless "+Lazy! restore" +qa
 ```
 
 ## ローカル設定
